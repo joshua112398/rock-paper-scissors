@@ -17,8 +17,33 @@ function computerPlay() {
 // Generates a single round and determines the winner based on the 
 // selection of the player and the randomly generated choice of the
 // computer.
+
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
+
+  const playerChoice = document.querySelector(".playerChoice");
+  const computerChoice = document.querySelector(".computerChoice");
+
+  playerChoice.textContent = playerSelection.toUpperCase();
+  computerChoice.textContent = computerSelection.toUpperCase();
+
+  const choices = document.querySelectorAll(".choicebox");
+  choices.forEach((choice) => {
+    console.log(choice.lastElementChild.textContent);
+    if (choice.lastElementChild.textContent === 'ROCK') {
+      choice.style.color = 'rgb(221, 73, 73)';
+    } else if (choice.lastElementChild.textContent === 'PAPER') {
+      choice.style.color = 'rgb(79, 216, 75)';
+    } else {
+      choice.style.color = 'rgb(49, 120, 212)';
+    }
+  });
+
+  let result = findWinner(playerSelection, computerSelection);
+  const winner = document.querySelector(".winner");
+  winner.textContent = result;
+}
+
+function findWinner(playerSelection, computerSelection) {
   if (playerSelection === 'rock') {
     switch (computerSelection) {
       case 'rock':
@@ -62,7 +87,13 @@ function game() {
   }
   */
 
-  
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      playRound(button.getAttribute('class'), computerPlay());
+    });
+  });
+
 }
 
 game();

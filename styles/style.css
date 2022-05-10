@@ -14,10 +14,56 @@ body {
 
 }
 
+.results {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.matchup {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px 240px;
+}
+
+.winner {
+    color:black;
+    font-weight: 900;
+    border-radius: .35rem; 
+    line-height: 100%;  
+    width: 600px; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+.choicebox {
+    color:black;
+    background-color: white;
+    border: solid 2px black;
+    font-weight: 900;
+    padding: 1rem 4rem;
+    border-radius: .35rem;   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+
+.choicebox p {
+    margin: 0px;
+}
+
 .choices {
     display: flex;
     gap: 24px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 button {
@@ -37,7 +83,7 @@ button {
 
 .paper {
     box-shadow: 5px 5px;
-    color: rgb(79, 216, 75)
+    color: rgb(79, 216, 75);
 }
 
 .scissors {
