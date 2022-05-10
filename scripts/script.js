@@ -51,10 +51,18 @@ function playRound(playerSelection, computerSelection) {
 
 // Starts the actual game and takes input from the user each round
 function game() {
-  let userInput = prompt("Rock, Paper, or Scissors?");
 
   // Plays 5 rounds of the game
+  /*
   for (let i = 0; i < 5; i++) {
-    playRound(userInput, computerPlay());
+    let userInput = prompt("Rock, Paper, or Scissors?");
+    let result = playRound(userInput, computerPlay());
+    console.log(result);
+    alert(result);
   }
+  */
+
+  
 }
+
+game();
