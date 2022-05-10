@@ -1,4 +1,4 @@
-// Generates a random choice
+
 function computerPlay() {
   let randomChoice = Math.floor(Math.random() * 3 + 1);
   switch (randomChoice) {
@@ -14,11 +14,6 @@ function computerPlay() {
   }
 }
 
-////////////////
-
-// Generates a single round and determines the winner based on the 
-// selection of the player and the randomly generated choice of the
-// computer.
 
 function playRound(playerSelection, computerSelection, playerScore, computerScore) {
 
@@ -43,33 +38,24 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
   let result = findWinner(playerSelection, computerSelection);
   if (result === 'player') {
     playerScore += 1;
+    const playerScoreboard = document.querySelector(".playerScore");
+    setScore(playerScoreboard, playerScore);
   }
   else if (result === 'computer') {
     computerScore += 1;
+    const computerScoreboard = document.querySelector(".computerScore");
+    setScore(computerScoreboard, computerScore);
   }
-
-  const playerScoreboard = document.querySelector(".playerScore");
-  const computerScoreboard = document.querySelector(".computerScore");
-  
-  setScore(playerScoreboard, playerScore);
-  setScore(computerScoreboard, computerScore);
 
   return result;
 
 }
 
-/////////////////
-
 function setScore(scoreboard, score) {
   const scoreBoxes = scoreboard.children;
-  for (let i = 0; i < score && score <= 5; i++) {
-    if (scoreBoxes[i].style.backgroundColor !== 'black') {
-      scoreBoxes[i].style.backgroundColor = 'black';
-    }
-  }
+  scoreBoxes[score-1].style.backgroundColor = 'black';
 }
 
-/////////////////
 
 function findWinner(playerSelection, computerSelection) {
   const winner = document.querySelector(".winner");
@@ -124,9 +110,6 @@ function findWinner(playerSelection, computerSelection) {
   return winnerName;
 }
 
-/////////////////
-
-// Starts the actual game and takes input from the user each round
 function game() {
 
   let playerScore = 0;
@@ -155,11 +138,14 @@ function game() {
     });
   });
 
+  showEndScreen();
+}
+
+function showEndScreen() {
   const playAgain = document.querySelector(".playAgain");
   playAgain.addEventListener('click', () => {
     window.location.reload();
   });
-
 }
 
 game();
